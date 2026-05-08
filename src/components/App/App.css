@@ -1,0 +1,46 @@
+* {
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a4458;
+}
+
+.BaseBox {
+    width: 30%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+}
+
+.cardWeather {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #158ab5;
+    border-radius: 15px;
+}
+
+.cardWeather h2 {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.cardWeather p {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.1em;
+    font-size: 35px;
+}
+
+.cardWeather img {
+    width: 50px;
+    height: 50px;
+}
