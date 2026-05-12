@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { getApiWeekWeather } from '../api/ApiWeekWeather'
+import '../App/App.css'
 
 export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
 
@@ -35,18 +36,20 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
 
     const serchedWeather = Object.entries(groupedWeather || {}).map(([date, items]) => {
         const midday = items.find(i => i.dt_txt.includes("12:00:00") || items[Math.floor(items.length / 2) || items[0]])
+        const icon = midday?.weather[0].icon
 
         return(
-            <div key={date}>
+            <div key={date} className='cardWeaterWeek'>
                 <h2>{date}</h2>
-                <div>
+                <div className='descriptWeek'>
                     <p>{Math.floor(midday?.main.temp)}°C</p>
+                    <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt={midday?.weather.main} />
                 </div>
             </div>
         )
     })
 
     return (
-        <div>{serchedWeather}</div>
+        <div className='boxWeek'>{serchedWeather}</div>
     )
 }
