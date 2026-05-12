@@ -7,15 +7,27 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
         try {
             const fetchWeather = async () => {
                 const data = await getApiWeekWeather()
-                getWeatherWeek(prev => [...prev, data])
+                getWeatherWeek(data)
             }
             fetchWeather()
         } catch (error) {
-            console.log('error');
+
         }
     }, [getWeatherWeek])
 
     console.log(viewWeatherWeek);
+
+    const groupedWeather = viewWeatherWeek.list.reduce((acc, item) => {
+        const date = item.dt_txt.splice(' ')[0]
+
+        if (!acc[date]) {
+            acc[date] = []
+        }
+
+        acc[date].push(item)
+
+        return acc
+    }, {})
 
     return (
         <div>WeatherWeek</div>
