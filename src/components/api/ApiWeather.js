@@ -5,7 +5,7 @@ export const getApiWeather = async () => {
         `https://api.openweathermap.org/data/2.5/weather?lat=52.28&lon=76.96&appid=${API_KEY}&units=metric`
     )
 
-    if(!res.ok){
+    if (!res.ok) {
         throw new Error("Error")
     }
 
