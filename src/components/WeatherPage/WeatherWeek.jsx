@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getApiWeekWeather } from '../api/ApiWeekWeather'
 import '../App/App.css'
+import SelectedDay from './SelectedDay'
 
 export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
+
+    const [modalActive, setModalActive] = useState(false)
+    const [selectedDay, setSelectedDay] = useState(null)
 
     useEffect(() => {
         try {
@@ -32,14 +36,14 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
     }, {})
 
     console.log(groupedWeather);
-    
+
 
     const serchedWeather = Object.entries(groupedWeather || {}).map(([date, items]) => {
         const midday = items.find(i => i.dt_txt.includes("12:00:00") || items[Math.floor(items.length / 2) || items[0]])
         const icon = midday?.weather[0].icon
 
-        return(
-            <div key={date} className='cardWeaterWeek'>
+        return (
+            <div key={date} className='cardWeaterWeek' onClick={() => { setModalActive(true); setSelectedDay({ date, midday, items }) }}>
                 <h2>{date}</h2>
                 <div className='descriptWeek'>
                     <p>{Math.floor(midday?.main.temp)}°C</p>
@@ -50,6 +54,9 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
     })
 
     return (
-        <div className='boxWeek'>{serchedWeather}</div>
+        <div className='boxWeek'>
+            {serchedWeather}
+            {modalActive ? <SelectedDay currentWeather = {selectedDay}/> : null}
+        </div>
     )
 }
