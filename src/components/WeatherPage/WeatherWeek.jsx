@@ -39,7 +39,7 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
 
 
     const serchedWeather = Object.entries(groupedWeather || {}).map(([date, items]) => {
-        const midday = items.find(i => i.dt_txt.includes("12:00:00") || items[Math.floor(items.length / 2) || items[0]])
+        const midday = items.find(i => i.dt_txt.includes("12:00:00")) || items[Math.floor(items.length / 2) || items[0]]
         const icon = midday?.weather[0].icon
 
         return (

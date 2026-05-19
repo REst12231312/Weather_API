@@ -3,6 +3,12 @@
     margin: 0 auto;
 }
 
+h1, h2, h3, p{
+    letter-spacing: 0.1em;
+    font-style: normal;
+    font-weight: 500;
+}
+
 .app {
     width: 100vw;
     height: 100vh;
@@ -29,15 +35,12 @@
 .generalWeather h2 {
     margin: 0;
     padding: 0;
-    letter-spacing: 0.1em;
-    font-weight: 400;
     font-size: 35px;
 }
 
 .generalWeather p {
     margin: 0;
     padding: 0;
-    letter-spacing: 0.1em;
     font-size: 35px;
 }
 
@@ -70,8 +73,6 @@
 .cardWeaterWeek h2 {
     margin: 0;
     padding: 0;
-    letter-spacing: 0.1em;
-    font-weight: 400;
     font-size: 25px;
 }
 
@@ -122,18 +123,37 @@
 .blockWeather {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(28, 62, 75, 0.767);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     z-index: 1000;
+    animation: 1s show;
+}
+
+@keyframes show {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 .backMenu {
-    padding: 50px;
+    padding: 30px;
     font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    transition: 1s;
+    background-color: #158ab5;
+}
+
+.backMenu:hover{
+    color: #158ab5;
+    background-color: #0a4458;
 }
 
 .weatherDate {
@@ -150,7 +170,7 @@
 .weatherContent {
     width: 90%;
     max-width: 900px;
-    background: white;
+    background: #158ab5;
 
     border-radius: 20px;
     padding: 25px;
@@ -160,6 +180,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.weatherContent h2{
+    font-size: 35px;
 }
 
 .carouselWrapper {
@@ -197,7 +221,8 @@
     flex: 0 0 calc(100% / 3);
     max-width: calc(90% / 3);
 
-    background: #f9fafb;
+    background: #0a4458;
+    color: white;
     border-radius: 16px;
 
     padding: 5px;
@@ -209,7 +234,26 @@
     transition: 0.25s;
 }
 
+.cardWeather h2{
+    font-size: 20px;
+}
+
+.cardWeather p{
+    font-size: 25px;
+}
+
+.cardWeather span{
+    font-size: 15px;
+}
+
 .cardWeather:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;    
 }

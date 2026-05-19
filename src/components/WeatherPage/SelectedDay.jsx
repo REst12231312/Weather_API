@@ -31,11 +31,11 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
         const timeDate = item.dt_txt.split(' ')[1].slice(0, 8)
         return (
             <div className='cardWeather' key={item.dt}>
-                <div key={item.dt}>
+                <div key={item.dt} className='cardContent'>
                     <h2>{timeDate}</h2>
                     <div>
                         <p>{Math.round(item.main.temp)}°C</p>
-                        <p>{Math.round(item.main.temp_min)}°C/{Math.round(item.main.temp_max)}°C</p>
+                        <span>{Math.round(item.main.temp_min)}°C/{Math.round(item.main.temp_max)}°C</span>
                     </div>
                 </div>
             </div>
@@ -47,8 +47,8 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
             <button onClick={handleClose} className="backMenu">Вернуться на главную</button>
             <div className='weatherContent'>
                 <div className='weatherDate'>
-                    <h2>{date}</h2>
                     <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
+                    <h2>{date}</h2>
                 </div>
                 <div className='carouselWrapper'>
                     <button onClick={prevSlide}>◀</button>
