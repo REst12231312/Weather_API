@@ -28,14 +28,14 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
     }
 
     const WeatherDay = items.map(item => {
-        const timeDate = item.dt_txt.split(' ').slice(0, 5)
+        const timeDate = item.dt_txt.split(' ')[1].slice(0, 8)
         return (
             <div className='cardWeather' key={item.dt}>
                 <div key={item.dt}>
                     <h2>{timeDate}</h2>
                     <div>
-                        <p>{Math.round(item.main.temp)}</p>
-                        <p>{Math.round(item.main.temp_min)}/{Math.round(item.main.temp_max)}</p>
+                        <p>{Math.round(item.main.temp)}°C</p>
+                        <p>{Math.round(item.main.temp_min)}°C/{Math.round(item.main.temp_max)}°C</p>
                     </div>
                 </div>
             </div>
@@ -43,23 +43,28 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
     })
 
     return (
-        <div className='selectedDay'>
-            <button onClick={handleClose}>Вернуться на главную</button>
+        <div className='blockWeather'>
+            <button onClick={handleClose} className="backMenu">Вернуться на главную</button>
             <div className='weatherContent'>
                 <div className='weatherDate'>
                     <h2>{date}</h2>
-                    <p></p>
+                    <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
                 </div>
-                <div className='carousel'>
-                    <button onClick={prevSlide}>назад</button>
-                    <div className='carouselContent'>
-                        <div className='carouselTrack' style={{
-                            transform: `translateX(-${currentSlide * (100 / visableCount)}%)`
-                        }}>
+                <div className='carouselWrapper'>
+                    <button onClick={prevSlide}>◀</button>
+
+                    <div className='carouselViewport'>
+                        <div
+                            className='carouselTrack'
+                            style={{
+                                transform: `translateX(-${currentSlide * (100 / visableCount)}%)`
+                            }}
+                        >
                             {WeatherDay}
                         </div>
                     </div>
-                    <button onClick={nextSlide}>вперед</button>
+
+                    <button onClick={nextSlide}>▶</button>
                 </div>
             </div>
         </div>

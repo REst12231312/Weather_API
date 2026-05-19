@@ -21,7 +21,7 @@ export default function Weather({ getWeather, viewWeather }) {
   const icon = viewWeather?.weather[0].icon;
 
   const WeatherCity = viewWeather && (
-    <div key={viewWeather.id} className='cardWeather'>
+    <div key={viewWeather.id} className='generalWeather'>
       <h2>{viewWeather.name}</h2>
       <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
       <p>{Math.round(viewWeather.main.temp)}°C</p>
