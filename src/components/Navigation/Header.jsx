@@ -5,7 +5,8 @@ export default function Header() {
     return (
         <div>
             <nav>
-                <Link to='/dashboard'>Dashboard</Link>
+                <Link to='/'>Dashboard</Link>
+                <Link to='/forecast'>Forecast</Link>
                 <Link to='/favorites'>Favorites</Link>
             </nav>
         </div>

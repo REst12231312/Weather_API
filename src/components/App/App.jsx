@@ -13,11 +13,10 @@ export default function App() {
     <div className='app'>
       <Header />
       <Routes>
-        <Route path='/dashboard' element={<Weather getWeather={setWeather} viewWeather={weather} />} />
-        <Route path='/favorites' />
+        <Route path='/' element={<Weather getWeather={setWeather} viewWeather={weather} />} />
+        <Route path='/forecast' element={<WeatherWeek getWeatherWeek={setWeatherArr} viewWeatherWeek={weatherArr} />} />
         <Route path='/favorites' />
       </Routes>
-      <WeatherWeek getWeatherWeek={setWeatherArr} viewWeatherWeek={weatherArr} />
     </div>
   )
 }
