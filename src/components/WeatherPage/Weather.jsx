@@ -6,7 +6,7 @@ export default function Weather({ getWeather, viewWeather }) {
 
   useEffect(() => {
     try {
-      const fetchWeather = async () => { 
+      const fetchWeather = async () => {
         const data = await getApiWeather()
         getWeather(data)
       }

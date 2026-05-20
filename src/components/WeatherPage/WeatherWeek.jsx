@@ -16,7 +16,7 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
             }
             fetchWeather()
         } catch (error) {
-
+            console.log("error");
         }
     }, [getWeatherWeek])
 
@@ -56,7 +56,7 @@ export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
     return (
         <div className='boxWeek'>
             {serchedWeather}
-            {modalActive ? <SelectedDay currentWeather = {selectedDay} closeWindow = {setSelectedDay} currentDay = {setSelectedDay}/> : null}
+            {modalActive ? <SelectedDay currentWeather={selectedDay} closeWindow={setSelectedDay} currentDay={setSelectedDay} /> : null}
         </div>
     )
 }

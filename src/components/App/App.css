@@ -3,7 +3,10 @@
     margin: 0 auto;
 }
 
-h1, h2, h3, p{
+h1,
+h2,
+h3,
+p {
     letter-spacing: 0.1em;
     font-style: normal;
     font-weight: 500;
@@ -134,10 +137,11 @@ h1, h2, h3, p{
 }
 
 @keyframes show {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
@@ -151,7 +155,7 @@ h1, h2, h3, p{
     background-color: #158ab5;
 }
 
-.backMenu:hover{
+.backMenu:hover {
     color: #158ab5;
     background-color: #0a4458;
 }
@@ -182,7 +186,7 @@ h1, h2, h3, p{
     gap: 20px;
 }
 
-.weatherContent h2{
+.weatherContent h2 {
     font-size: 35px;
 }
 
@@ -208,7 +212,6 @@ h1, h2, h3, p{
 .carouselTrack {
     display: flex;
     transition: transform 0.4s ease;
-    gap: 20px;
 
     user-select: none;
     -webkit-user-select: none;
@@ -219,13 +222,15 @@ h1, h2, h3, p{
 
 .cardWeather {
     flex: 0 0 calc(100% / 3);
-    max-width: calc(90% / 3);
+    min-width: calc(100% / 3);
+
+    box-sizing: border-box;
 
     background: #0a4458;
     color: white;
     border-radius: 16px;
 
-    padding: 5px;
+    padding: 10px;
 
     display: flex;
     flex-direction: column;
@@ -234,15 +239,15 @@ h1, h2, h3, p{
     transition: 0.25s;
 }
 
-.cardWeather h2{
+.cardWeather h2 {
     font-size: 20px;
 }
 
-.cardWeather p{
+.cardWeather p {
     font-size: 25px;
 }
 
-.cardWeather span{
+.cardWeather span {
     font-size: 15px;
 }
 
@@ -251,9 +256,9 @@ h1, h2, h3, p{
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.cardContent{
+.cardContent {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 10px;    
+    padding: 10px;
 }

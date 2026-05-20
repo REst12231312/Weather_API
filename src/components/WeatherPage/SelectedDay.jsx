@@ -5,8 +5,16 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
     const [currentSlide, setCurrentSlide] = useState(0)
     const visableCount = 3;
 
+    if (!currentWeather) return null
+
+
+
+    const { date, items, midday } = currentWeather
+    const icon = midday?.weather[0].icon;
+    console.log(items);
+
     const nextSlide = () => {
-        if (currentSlide + visableCount < items.length) {
+        if (currentSlide < items.length - visableCount) {
             setCurrentSlide(prev => prev + 1)
         }
     }
@@ -17,10 +25,6 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
         }
     }
 
-    if (!currentWeather) return null
-
-    const { date, items, midday } = currentWeather
-    const icon = midday?.weather[0].icon;
 
     const handleClose = () => {
         closeWindow(false)
@@ -28,10 +32,10 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
     }
 
     const WeatherDay = items.map(item => {
-        const timeDate = item.dt_txt.split(' ')[1].slice(0, 8)
+        const timeDate = item.dt_txt.split(' ')[1].slice(0, 5)
         return (
-            <div className='cardWeather' key={item.dt}>
-                <div key={item.dt} className='cardContent'>
+            <div className='cardWeather' key={item.dt} style={{ minWidth: `calc(100% / ${visableCount})` }}>
+                <div className='cardContent'>
                     <h2>{timeDate}</h2>
                     <div>
                         <p>{Math.round(item.main.temp)}°C</p>
@@ -45,7 +49,7 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
     return (
         <div className='blockWeather'>
             <button onClick={handleClose} className="backMenu">Вернуться на главную</button>
-            <div className='weatherContent'>
+            {/* <div className='weatherContent'>
                 <div className='weatherDate'>
                     <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="" />
                     <h2>{date}</h2>
@@ -57,16 +61,18 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
                         <div
                             className='carouselTrack'
                             style={{
-                                transform: `translateX(-${currentSlide * (100 / visableCount)}%)`
+                                display: 'flex',
+                                transition: 'transform 0.3s ease',
+                                transform: `translateX(-${currentSlide * (100 / items.length)}%)`
                             }}
                         >
                             {WeatherDay}
                         </div>
                     </div>
-
                     <button onClick={nextSlide}>▶</button>
                 </div>
-            </div>
+            </div> */}
+            <div>{WeatherDay}</div>
         </div>
     )
 }
