@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getApiWeather } from '../api/ApiWeather'
+import { getApiWeather } from '../../constants/api/ApiWeather'
 import '../App/App.css'
 
 export default function Weather({ getWeather, viewWeather }) {

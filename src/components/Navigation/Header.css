@@ -1,0 +1,13 @@
+.headerBox{
+    margin: 0;
+    width: 10%;
+    height: 100%;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}

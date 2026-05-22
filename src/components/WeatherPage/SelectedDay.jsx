@@ -72,7 +72,7 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
                     <button onClick={nextSlide}>▶</button>
                 </div>
             </div> */}
-            <div>{WeatherDay}</div>
+            {/* <div>{WeatherDay}</div> */}
         </div>
     )
 }
