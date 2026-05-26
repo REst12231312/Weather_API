@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Header from '../Navigation/Header'
 import Weather from '../WeatherPage/Weather'
 import WeatherWeek from '../WeatherPage/WeatherWeek'
-import Header from '../Navigation/Header'
+import '../App/App.css'
+
 
 export default function App() {
 
   const [weather, setWeather] = useState(null)
   const [weatherArr, setWeatherArr] = useState([])
 
-  if(!weather && !weatherArr) return null;
+  
 
   return (
     <div className='app'>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './StyleWeather.css'
 
 export default function SelectedDay({ currentWeather, closeWindow, currentDay }) {
 
@@ -72,7 +73,7 @@ export default function SelectedDay({ currentWeather, closeWindow, currentDay })
                     <button onClick={nextSlide}>▶</button>
                 </div>
             </div> */}
-            {/* <div>{WeatherDay}</div> */}
+            <div>{WeatherDay}</div>
         </div>
     )
 }

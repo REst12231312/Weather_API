@@ -1,13 +1,48 @@
-.headerBox{
+.headerBox {
     margin: 0;
     width: 10%;
     height: 100%;
+    background-color: #bfd2e9;
+    position: fixed;
+}
+
+ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+li {
+    width: 100px;
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+li:hover {
+    background-color: #fdfdfd;
+    border-radius: 15px;
+    transition: 1s;
+}
+
+a {
+    color: #111a57;
+    text-decoration: none;
+}
+
+img{
+    width: 15px;
+    height: 15px;
 }
 
 .navigation{
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 70%;
+    gap: 20px;
 }
