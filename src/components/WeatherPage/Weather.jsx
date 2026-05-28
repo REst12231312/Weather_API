@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { getApiWeather } from '../../constants/api/ApiWeather'
 import './StyleWeather.css'
+import { getApiWeekWeather } from '../../constants/api/ApiWeekWeather'
 
 export default function Weather({ getWeather, viewWeather }) {
 
@@ -17,7 +18,6 @@ export default function Weather({ getWeather, viewWeather }) {
   }, [getWeather])
 
   if (!viewWeather) { return (<p>Loading..</p>) }
-
   console.log(viewWeather);
 
   const icon = viewWeather?.weather?.[0]?.icon;
