@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getApiWeekWeather } from '../../constants/api/ApiWeekWeather'
 import SelectedDay from './SelectedDay'
 import './StyleWeather.css'
+import { getApiWeekWeather } from '../../constants/api/ApiWeather'
 
 
 export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {

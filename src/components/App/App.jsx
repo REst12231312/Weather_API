@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from '../Navigation/Header'
-import Weather from '../WeatherPage/Weather'
+import WeatherToDay from '../WeatherPage/WeatherToDay'
 import WeatherWeek from '../WeatherPage/WeatherWeek'
 import '../App/App.css'
 
 
 export default function App() {
 
-  const [weather, setWeather] = useState(null)
   const [weatherArr, setWeatherArr] = useState([])
-
-  
 
   return (
     <div className='app'>
       <Header />
       <Routes>
-        <Route path='/' element={<Weather getWeather={setWeather} viewWeather={weather} />} />
+        <Route path='/' element={<WeatherToDay/>} />
         <Route path='/forecast' element={<WeatherWeek getWeatherWeek={setWeatherArr} viewWeatherWeek={weatherArr} />} />
         <Route path='/favorites' />
       </Routes>
