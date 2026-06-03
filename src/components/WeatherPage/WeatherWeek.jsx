@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SelectedDay from './SelectedDay'
-import './StyleWeather.css'
+// import './StyleWeather.css'
 import { getApiWeekWeather } from '../../constants/api/ApiWeather'
 
 

@@ -1,0 +1,51 @@
+.mainBox {
+    margin-right: 0px;
+    width: 90%;
+    height: 30%;
+    display: flex;
+}
+
+.currentWeather {
+    background-color: white;
+    box-shadow: 1px 1px #edf1f9;
+    border: 1px solid #edf1f9;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.currentCity {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mainWeather {
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    gap: 5px;
+    align-items: left;
+    text-align: left;
+}
+
+.mainWeather h1 {
+    font-size: 46px;
+    font-weight: 400;
+}
+
+
+
+.weatherDesc {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.weatherDesc p {
+    padding: 10px;
+    border-bottom: 2px solid white;
+}

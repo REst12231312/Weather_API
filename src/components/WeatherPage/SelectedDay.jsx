@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './StyleWeather.css'
+// import './StyleWeather.css'
 
 export default function SelectedDay({ currentWeather, closeWindow, currentDay }) {
 
