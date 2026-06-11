@@ -30,26 +30,27 @@ export default function WeatherWeek() {
 
     return (
         <div className="weatherWeek">
-            {forecastWeather.map(({ date, midday }) => {
-                const icon = midday?.weather?.[0]?.icon;
+            <div className='forecastCard'>
+                {forecastWeather.map(({ date, midday }) => {
+                    const icon = midday?.weather?.[0]?.icon;
 
-                return (
-                    <div key={date} className="cardWeatherWeek">
-                        <h2>{date}</h2>
+                    return (
+                        <div key={date} className="cardWeatherWeek">
+                            <h2>{date}</h2>
 
-                        <div className="descriptWeek">
-                            <p>
-                                {Math.round(midday?.main?.temp)}°C
-                            </p>
-
-                            <img
-                                src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-                                alt=""
-                            />
+                            <div className="descriptWeek">
+                                <img
+                                    src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                                    alt=""
+                                />
+                                <p>
+                                    {Math.round(midday?.main?.temp)}°C
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                );
-            })}
+                    );
+                })}
+            </div>
         </div>
     );
 }
