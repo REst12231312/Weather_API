@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { getApiWeekWeather } from "../constants/api/ApiWeather";
 
-function useForecastWeather() {
+export default function useForecastWeather() {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchWeather = async () => {
@@ -13,8 +14,8 @@ function useForecastWeather() {
                 const response = await getApiWeekWeather()
 
                 setData(response)
-            } catch (error) {
-                console.log("Ошибка загрузки данных", error);
+            } catch (err) {
+                setError(err.message || "Ошибка загрузки данных")
             } finally {
                 setLoading(false)
             }
@@ -22,5 +23,5 @@ function useForecastWeather() {
         fetchWeather()
     }, [])
 
-    return { data, loading }
+    return { data, loading, error }
 }

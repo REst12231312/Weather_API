@@ -1,63 +1,55 @@
 import React, { useEffect, useState } from 'react'
-import SelectedDay from './SelectedDay'
-// import './StyleWeather.css'
-import { getApiWeekWeather } from '../../constants/api/ApiWeather'
+import useForecastWeather from '../../hooks/useForecastWeather'
+import Loader from '../Common/Loader'
+import ErrorMessage from '../Common/ErrorMessage'
+import groupdedWeather from '../../utils/groupdedWeather'
+import './WeatherStyle/StyleWeek.css'
 
 
-export default function WeatherWeek({ getWeatherWeek, viewWeatherWeek }) {
+export default function WeatherWeek() {
 
-    const [modalActive, setModalActive] = useState(false)
-    const [selectedDay, setSelectedDay] = useState(null)
+    const { data, loading, error } = useForecastWeather()
 
-    useEffect(() => {
-        try {
-            const fetchWeather = async () => {
-                const data = await getApiWeekWeather()
-                getWeatherWeek(data)
-            }
-            fetchWeather()
-        } catch (error) {
-            console.log("error");
-        }
-    }, [getWeatherWeek])
+    if (loading) {
+        return <Loader />
+    }
 
-    console.log(viewWeatherWeek);
+    if (error) {
+        return <ErrorMessage message={error} />
+    }
 
+    if (!data) {
+        return null
+    }
 
-    const groupedWeather = viewWeatherWeek?.list?.reduce((acc, item) => {
-        const date = item.dt_txt.split(' ')[0]
+    console.log(data);
 
-        if (!acc[date]) {
-            acc[date] = []
-        }
+    const forecastWeather = groupdedWeather(data?.list)
 
-        acc[date].push(item)
-
-        return acc
-    }, {})
-
-    console.log(groupedWeather);
-
-
-    const serchedWeather = Object.entries(groupedWeather || {}).map(([date, items]) => {
-        const midday = items.find(i => i.dt_txt.includes("12:00:00")) || items[Math.floor(items.length / 2) || items[0]]
-        const icon = midday?.weather[0].icon
-
-        return (
-            <div key={date} className='cardWeaterWeek' onClick={() => { setModalActive(true); setSelectedDay({ date, midday, items }) }}>
-                <h2>{date}</h2>
-                <div className='descriptWeek'>
-                    <p>{Math.floor(midday?.main.temp)}°C</p>
-                    <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt={midday?.weather.main} />
-                </div>
-            </div>
-        )
-    })
+    if (!forecastWeather.length) return null;
 
     return (
-        <div className='boxWeek'>
-            {serchedWeather}
-            {modalActive ? <SelectedDay currentWeather={selectedDay} closeWindow={setSelectedDay} currentDay={setSelectedDay} /> : null}
+        <div className="weatherWeek">
+            {forecastWeather.map(({ date, midday }) => {
+                const icon = midday?.weather?.[0]?.icon;
+
+                return (
+                    <div key={date} className="cardWeatherWeek">
+                        <h2>{date}</h2>
+
+                        <div className="descriptWeek">
+                            <p>
+                                {Math.round(midday?.main?.temp)}°C
+                            </p>
+
+                            <img
+                                src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                );
+            })}
         </div>
-    )
+    );
 }
