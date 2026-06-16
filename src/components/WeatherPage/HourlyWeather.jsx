@@ -3,10 +3,9 @@ import useForecastWeather from '../../hooks/useForecastWeather'
 import Loader from '../Common/Loader'
 import ErrorMessage from '../Common/ErrorMessage'
 import groupdedWeather from '../../utils/groupdedWeather'
-import './WeatherStyle/StyleWeek.css'
+import './WeatherStyle/StyleHour.css'
 
-
-export default function WeatherWeek() {
+export default function HourlyWeather() {
 
     const { data, loading, error } = useForecastWeather()
 
@@ -24,27 +23,36 @@ export default function WeatherWeek() {
 
     console.log(data);
 
-    const forecastWeather = groupdedWeather(data?.list)
+    const weekForecast = groupdedWeather(data?.list)
 
-    if (!forecastWeather.length) return null;
+    if (!weekForecast.length) return null;
+
+    const today = new Date().toISOString().split("T")[0];
+
+    const todayForecast = weekForecast.find(
+        day => day.date === today
+    )
+
+    console.log(todayForecast);
+
 
     return (
-        <div className="weatherWeek">
-            <div className='forecastCard'>
-                {forecastWeather.map(({ date, midday }) => {
-                    const icon = midday?.weather?.[0]?.icon;
+        <div className='baseHour'>
+            <div className='hourlyCard'>
+                {todayForecast.items.map((item) => {
+                    const icon = item?.weather?.[0]?.icon;
 
                     return (
-                        <div key={date} className="cardWeatherWeek">
-                            <h2>{date}</h2>
+                        <div key={item?.dt} className="cardWeatherHourly">
+                            <h2>{item.dt_txt.split(" ")[1].slice(0, 5)}</h2>
 
-                            <div className="descriptWeek">
+                            <div className="descriptHour">
                                 <img
                                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                                     alt=""
                                 />
                                 <p>
-                                    {Math.round(midday?.main?.temp)}°C
+                                    {Math.round(item.main?.temp)}°C
                                 </p>
                             </div>
                         </div>
@@ -52,5 +60,5 @@ export default function WeatherWeek() {
                 })}
             </div>
         </div>
-    );
+    )
 }
